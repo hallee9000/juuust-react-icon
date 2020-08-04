@@ -1,6 +1,6 @@
 {
-  "name": "juuust-react-icon",
-  "version": "0.2.2",
+  "name": "webnovel-icon",
+  "version": "0.0.1",
   "description": "Icon automation workflow with Figma",
   "main": "dist/index.js",
   "module": "src/icons.js",
@@ -9,8 +9,8 @@
     "dist",
     "es"
   ],
-  "repository": "https://github.com/leadream/juuust-react-icon.git",
-  "author": "leadream",
+  "repository": "git@github.com:ziven27/juuust-react-icon.git",
+  "author": "ziven27",
   "keywords": [
     "react",
     "icons",
