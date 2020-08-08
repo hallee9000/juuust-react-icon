@@ -3,8 +3,8 @@
   "version": "0.0.11",
   "description": "Icon automation workflow with Figma",
   "main": "dist/index.js",
-  "module": "src/icons.js",
-  "typings": "src/icons.d.ts",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "files": [
     "dist",
     "es",
@@ -27,13 +27,15 @@
   "homepage": "https://github.com/leadream/juuust-react-icon#readme",
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
-    "generate": "sudo rm -rf src/icons && node bin/build.js",
-    "build:bundle": "sudo rm -rf dist && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js",
-    "dev": "rollup -w -c ./build/rollup.config.dev.js",
-    "build": "rollup -c ./build/rollup.config.prod.js"
+    "generate": "sudo rm -rf src/icons && node bin/build.js"
   },
   "config": {
     "style": "fill"
   },
-  "license": "MIT"
+  "devDependencies": {
+    "svgo": "^1.3.0",
+    "cheerio": "^1.0.0-rc.3",
+    "uppercamelcase": "^3.0.0",
+    "prettier-eslint": "^9.0.0"
+  }
 }
