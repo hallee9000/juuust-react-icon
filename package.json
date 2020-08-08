@@ -27,7 +27,7 @@
   "homepage": "https://github.com/leadream/juuust-react-icon#readme",
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
-    "generate": "sudo rm -rf src/icons && node bin/build.js"
+    "generate": "sudo rm -rf dist/ && node bin/build.js"
   },
   "config": {
     "style": "fill"
