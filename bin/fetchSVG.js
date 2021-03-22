@@ -37,35 +37,48 @@ if (!fileId) {
   }
 }
 
-console.log(`Exporting ${FIGMA_FILE_URL} components`)
+console.log(`Exporting ${FIGMA_FILE_URL} components`);
+
 client.file(fileId)
 
   .then(({ data }) => {
-    console.log('Processing response')
-    const components = {}
+    console.log('Processing response');
 
-    function check(c) {
-      if (c.type === 'COMPONENT') {
-        const {name, id} = c
-        const {description = '', key} = data.components[c.id]
-        const {width, height} = c.absoluteBoundingBox
+    const components = {};
 
-        components[id] = {
-          name,
-          id,
-          key,
-          file: fileId,
-          description,
-          width,
-          height
-        }
-      } else if (c.children) {
-        // eslint-disable-next-line github/array-foreach
-        c.children.forEach(check)
+    data.document.children[2].children[0].children.forEach(instance => {
+      const nameParts = instance.name.split('/');
+
+      components[instance.id] = {
+        id: instance.id,
+        name: nameParts[nameParts.length - 2].trim(),
+        width: instance.absoluteBoundingBox.width,
+        height: instance.absoluteBoundingBox.height,
       }
-    }
+    });
 
-    data.document.children.forEach(check)
+    // function check(c) {
+    //   if (c.type === 'COMPONENT') {
+    //     const {name, id} = c
+    //     const {description = '', key} = data.components[c.id]
+    //     const {width, height} = c.absoluteBoundingBox
+
+    //     components[id] = {
+    //       name,
+    //       id,
+    //       key,
+    //       file: fileId,
+    //       description,
+    //       width,
+    //       height
+    //     }
+    //   } else if (c.children) {
+    //     // eslint-disable-next-line github/array-foreach
+    //     c.children.forEach(check)
+    //   }
+    // }
+
+    // data.document.children.forEach(check)
     if (Object.values(components).length === 0) {
       throw Error('No components found!')
     }
@@ -73,7 +86,22 @@ client.file(fileId)
     return components
   })
   .then(components => {
-    console.log('Getting export urls')
+    // console.log('Getting export urls')
+    // return client.fileImages(
+    //   fileId,
+    //   {
+    //     format: options.format,
+    //     ids: Object.keys(components),
+    //     scale: options.scale
+    //   }
+    // ).then(({data}) => {
+    //   for(const id of Object.keys(data.images)) {
+    //     components[id].image = data.images[id]
+    //   }
+    //   return components
+    // })
+
+
     return client.fileImages(
       fileId,
       {
@@ -82,11 +110,13 @@ client.file(fileId)
         scale: options.scale
       }
     ).then(({data}) => {
-      for(const id of Object.keys(data.images)) {
-        components[id].image = data.images[id]
-      }
-      return components
-    })
+
+        for(const id of Object.keys(data.images)) {
+          components[id].image = data.images[id]
+        };
+        console.log('Components:', components);
+        return components;
+    });
   })
   .then(components => {
     return ensureDir(join(options.outputDir))
