@@ -65,9 +65,9 @@ const generateIconCode = async ({name}) => {
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
   const code = fs.readFileSync(location)
-  const svgCode = await processSvg(code)
+  // const svgCode = await processSvg(code)
   const ComponentName = names.componentName
-  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), code)
   const component = format({
     text: element,
     eslintConfig: {
