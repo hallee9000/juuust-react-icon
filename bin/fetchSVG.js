@@ -45,17 +45,50 @@ client.file(fileId)
     console.log('Processing response');
 
     const components = {};
+    // const nameArray = [];
 
     data.document.children[2].children[0].children.forEach(instance => {
       const nameParts = instance.name.split('/');
+      const namePart1 = nameParts[nameParts.length - 2].replace(/ /g, '');
+      const namePart2 = nameParts[nameParts.length - 1].replace(/ /g, '')
+        .replace('a.', '').replace('b.', '').replace('c.', '').replace('d.', '');
 
       components[instance.id] = {
         id: instance.id,
-        name: nameParts[nameParts.length - 2].trim(),
+        name: `${namePart1}${namePart2}`,
         width: instance.absoluteBoundingBox.width,
         height: instance.absoluteBoundingBox.height,
       }
+
+      // nameArray.push(components[instance.id].name);
     });
+
+    // console.log(nameArray);
+    // function countDistinct(arr, n) {
+    //     let res = 1;
+    
+    //     // Pick all elements one by one
+    //     for (let i = 1; i < n; i++) {
+    //         let j = 0;
+    //         for (j = 0; j < i; j++)
+    //             if (arr[i] === arr[j])
+    //                 break;
+    
+    //         // If not printed earlier, then print it
+    //         if (i === j)
+    //             res++;
+    //     }
+    //     return res;
+    // }
+
+    // console.log(`${countDistinct(nameArray, nameArray.length)} distinct`);    
+    // nameArray.sort();
+    // console.log(`Sorted`, nameArray.sort());
+    // const filtered = nameArray.filter((el, index) => nameArray.indexOf(el) !== index)
+    // const duplicates = [...new Set(filtered)]
+    // console.log("dupes", duplicates);
+
+
 
     // function check(c) {
     //   if (c.type === 'COMPONENT') {
@@ -114,7 +147,7 @@ client.file(fileId)
         for(const id of Object.keys(data.images)) {
           components[id].image = data.images[id]
         };
-        console.log('Components:', components);
+        // console.log('Components:', components);
         return components;
     });
   })
