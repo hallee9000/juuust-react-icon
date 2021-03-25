@@ -49,7 +49,7 @@ client.file(fileId)
 
     data.document.children[2].children[0].children.forEach(instance => {
       const nameParts = instance.name.split('/');
-      const namePart1 = nameParts[nameParts.length - 2].replace(/ /g, '');
+      const namePart1 = nameParts[nameParts.length - 2].replace(/ /g, '').replace('&', '');
       const namePart2 = nameParts[nameParts.length - 1].replace(/ /g, '')
         .replace('a.', '').replace('b.', '').replace('c.', '').replace('d.', '');
 
