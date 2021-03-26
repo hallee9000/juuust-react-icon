@@ -18,10 +18,10 @@ function CamelCase(str) {
 function optimize(svg) {
   const svgo = new Svgo({
     plugins: [
-      { convertShapeToPath: false },
-      { mergePaths: false },
-      { removeAttrs: { attrs: '(fill|stroke.*)' } },
-      { removeTitle: true },
+      // { convertShapeToPath: false },
+      // { mergePaths: false },
+      // { removeAttrs: { attrs: '(fill|stroke.*)' } },
+      // { removeTitle: true },
     ],
   });
 

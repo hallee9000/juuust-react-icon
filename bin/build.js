@@ -45,7 +45,6 @@ const generateIconsIndex = () => {
 
 // generate attributes code
 const attrsToString = (attrs, style) => {
-  console.log('style: ', style)
   return Object.keys(attrs).map((key) => {
     // should distinguish fill or stroke
     if (key === 'width' || key === 'height' || key === style) {
@@ -60,11 +59,20 @@ const attrsToString = (attrs, style) => {
 
 // generate icon code separately
 const generateIconCode = async ({name}) => {
+
   const names = parseName(name, defaultStyle)
-  console.log(names)
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
-  const code = fs.readFileSync(location)
+  const codeBuffer = fs.readFileSync(location);
+
+  //Swap default SVG width and height with a configurable size.
+  let code = codeBuffer.toString();
+  code = code.replace('width="24" height="24"', `width={size} height={size}`);
+
+  const defaultColor = '#0A0A0B';
+  code = code.replace('width="24" height="24"', `width={size} height={size}`);
+
+
   // const svgCode = await processSvg(code)
   const ComponentName = names.componentName
   const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), code)
@@ -80,9 +88,9 @@ const generateIconCode = async ({name}) => {
     },
   });
 
-  fs.writeFileSync(destination, component, 'utf-8');
+  fs.writeFileSync(destination, element, 'utf-8');
 
-  console.log('Successfully built', ComponentName);
+  // console.log('Successfully built', ComponentName);
   return {ComponentName, name: names.name}
 }
 
