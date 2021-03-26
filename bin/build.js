@@ -70,7 +70,6 @@ const generateIconCode = async ({name}) => {
   code = code.replace('width="24" height="24"', `width={size} height={size} color={color}`);
 
   //Swap default color with 'currentcolor' to allow assigning color via a prop.
-  const defaultColor = '#0A0A0B';
   code = code.replace(/#0A0A0B/g, 'currentcolor');
 
 
