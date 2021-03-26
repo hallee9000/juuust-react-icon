@@ -12,6 +12,7 @@ const Container = styled.ul`
   margin: 0;
   padding: 0%;
   list-style: none;
+  font-family: sans-serif;
 `
 
 class List extends React.Component {
@@ -26,7 +27,7 @@ class List extends React.Component {
                 const Icon = icons[key]
                 return <li key={index}>
                   <IconWrapper>
-                    <Icon/>
+                    <Icon size="50"/>
                     <span>{key}</span>
                   </IconWrapper>
                 </li>
