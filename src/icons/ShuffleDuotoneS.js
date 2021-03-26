@@ -5,7 +5,7 @@
   const ShuffleDuotoneS = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path opacity="0.8" d="M4.5 4.5L9.5 9.5" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M14.5 14.5L19.5 19.5" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M15 19.5H19.5V15" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

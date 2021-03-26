@@ -5,7 +5,7 @@
   const InAppWebHelpDefault = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M19 4H5C3.89543 4 3 4.89543 3 6V15C3 16.1046 3.89543 17 5 17H19C20.1046 17 21 16.1046 21 15V6C21 4.89543 20.1046 4 19 4Z" fill="#EBEFFF"/>
 <path opacity="0.8" d="M3.5 9.5V6C3.5 5.17157 4.17157 4.5 5 4.5H19C19.8284 4.5 20.5 5.17157 20.5 6V15C20.5 15.8284 19.8284 16.5 19 16.5H10" stroke="#4400FF" stroke-width="1.5" stroke-linecap="round"/>
 <path opacity="0.8" d="M10 19.5H14" stroke="#4400FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

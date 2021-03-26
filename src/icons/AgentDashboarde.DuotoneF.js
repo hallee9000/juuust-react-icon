@@ -5,7 +5,7 @@
   const AgentDashboardeDuotoneF = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path opacity="0.8" d="M10 20.5H14" stroke="#4400FF" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M11 18H13V21H11V18Z" fill="#4400FF"/>
 <path opacity="0.8" d="M3 7.5C3 6.67157 3.67157 6 4.5 6H19.5C20.3284 6 21 6.67157 21 7.5V16.5C21 17.3284 20.3284 18 19.5 18H4.5C3.67157 18 3 17.3284 3 16.5V7.5Z" fill="#4400FF"/>

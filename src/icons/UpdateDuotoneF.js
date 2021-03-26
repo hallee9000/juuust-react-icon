@@ -5,7 +5,7 @@
   const UpdateDuotoneF = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path opacity="0.8" d="M12.5 4.25C16.25 4.25 20.25 7 20.25 12C20.25 16.25 17.0209 18.3389 15.75 19" stroke="#4400FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M19.25 20.7499C19.8023 20.7499 20.25 20.3022 20.25 19.7499C20.25 19.1976 19.8023 18.7499 19.25 18.7499L19.25 20.7499ZM15.5 19.7499L14.5 19.7499C14.5 20.0151 14.6054 20.2694 14.7929 20.457C14.9804 20.6445 15.2348 20.7499 15.5 20.7499L15.5 19.7499ZM16.5 16C16.5 15.4477 16.0523 15 15.5 15C14.9477 15 14.5 15.4477 14.5 16L16.5 16ZM19.25 18.7499L15.5 18.7499L15.5 20.7499L19.25 20.7499L19.25 18.7499ZM16.5 19.7499L16.5 16L14.5 16L14.5 19.7499L16.5 19.7499Z" fill="#34D399"/>
 <path opacity="0.8" d="M11.45 19.75C7.5 19.75 3.75 16.75 3.75 12C3.75 7.75 6.97908 5.66114 8.25 5" stroke="#4400FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

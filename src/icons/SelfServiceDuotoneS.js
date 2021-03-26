@@ -5,7 +5,7 @@
   const SelfServiceDuotoneS = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.8">
 <mask id="path-1-inside-1" fill="white">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0002 13.0002H19.2922C19.7377 13.0002 19.9607 13.5387 19.6458 13.8537L17.2802 16.2193L19.7804 18.7198C20.0733 19.0127 20.0733 19.4875 19.7804 19.7804C19.4874 20.0733 19.0126 20.0733 18.7197 19.7804L16.2196 17.28L13.8538 19.6458C13.5388 19.9608 13.0002 19.7377 13.0002 19.2923V14.0002C13.0002 13.4479 13.448 13.0002 14.0002 13.0002Z"/>

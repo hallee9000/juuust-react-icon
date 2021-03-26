@@ -5,7 +5,7 @@
   const NotificationOffeDuotoneF = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <circle opacity="0.8" cx="12.0005" cy="17" r="3.5" fill="#34D399"/>
 <g opacity="0.8">
 <mask id="path-2-inside-1" fill="white">

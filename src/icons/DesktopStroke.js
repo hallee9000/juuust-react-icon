@@ -5,7 +5,7 @@
   const DesktopStroke = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M3.5 12.5L20.5 12.5" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M19 4.5H5C4.17157 4.5 3.5 5.17157 3.5 6V15C3.5 15.8284 4.17157 16.5 5 16.5H19C19.8284 16.5 20.5 15.8284 20.5 15V6C20.5 5.17157 19.8284 4.5 19 4.5Z" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round"/>
 <path d="M10 19.5H14" stroke="currentcolor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

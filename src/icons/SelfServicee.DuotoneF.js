@@ -5,7 +5,7 @@
   const SelfServiceeDuotoneF = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect opacity="0.8" x="4.00098" y="4.00006" width="7" height="7" rx="1.5" fill="#4400FF"/>
 <rect opacity="0.8" x="4" y="13" width="7" height="7" rx="1.5" fill="#4400FF"/>
 <rect opacity="0.8" x="4" y="4" width="16" height="7" rx="1.5" fill="#4400FF"/>

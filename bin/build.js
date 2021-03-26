@@ -67,7 +67,7 @@ const generateIconCode = async ({name}) => {
 
   //Swap default SVG width and height with a configurable size.
   let code = codeBuffer.toString();
-  code = code.replace('width="24" height="24"', `width={size} height={size}`);
+  code = code.replace('width="24" height="24"', `width={size} height={size} color={color}`);
 
   //Swap default color with 'currentcolor' to allow assigning color via a prop.
   const defaultColor = '#0A0A0B';

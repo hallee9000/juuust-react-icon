@@ -5,7 +5,7 @@
   const InAppWebHelpFill = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M3 5.5C3 4.67157 3.67157 4 4.5 4H19.5C20.3284 4 21 4.67157 21 5.5V12.5H8.91465C8.70873 11.9174 8.15311 11.5 7.5 11.5H3V5.5ZM9 13.5H21V15.5C21 16.3284 20.3284 17 19.5 17H9V13.5ZM12 15.75C12.2761 15.75 12.5 15.5261 12.5 15.25C12.5 14.9739 12.2761 14.75 12 14.75C11.7239 14.75 11.5 14.9739 11.5 15.25C11.5 15.5261 11.7239 15.75 12 15.75Z" fill="currentcolor"/>
 <rect x="10" y="19" width="4" height="1" rx="0.5" fill="currentcolor"/>
 <path d="M11 17H13V20H11V17Z" fill="currentcolor"/>

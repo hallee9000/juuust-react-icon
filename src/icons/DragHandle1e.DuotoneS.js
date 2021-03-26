@@ -5,7 +5,7 @@
   const DragHandle1eDuotoneS = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path opacity="0.8" d="M14 19C14 19.8284 14.6716 20.5 15.5 20.5C16.3284 20.5 17 19.8284 17 19C17 18.1716 16.3284 17.5 15.5 17.5C14.6716 17.5 14 18.1716 14 19Z" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M14 12C14 12.8284 14.6716 13.5 15.5 13.5C16.3284 13.5 17 12.8284 17 12C17 11.1716 16.3284 10.5 15.5 10.5C14.6716 10.5 14 11.1716 14 12Z" stroke="#34D399" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M14 5C14 5.82843 14.6716 6.5 15.5 6.5C16.3284 6.5 17 5.82843 17 5C17 4.17157 16.3284 3.5 15.5 3.5C14.6716 3.5 14 4.17157 14 5Z" stroke="#4400FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

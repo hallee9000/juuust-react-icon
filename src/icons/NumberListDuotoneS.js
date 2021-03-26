@@ -5,7 +5,7 @@
   const NumberListDuotoneS = (props) => {
     const { color, size, ...otherProps } = props;
     return (
-      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width={size} height={size} color={color} viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path opacity="0.8" d="M6.5 17H20.5" stroke="#4400FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M3 17C3 17.2761 3.22386 17.5 3.5 17.5C3.77614 17.5 4 17.2761 4 17C4 16.7239 3.77614 16.5 3.5 16.5L4 16H3" stroke="#34D399" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path opacity="0.8" d="M6.5 12H20.5" stroke="#4400FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
