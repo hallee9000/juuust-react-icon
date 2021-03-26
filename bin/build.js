@@ -69,8 +69,9 @@ const generateIconCode = async ({name}) => {
   let code = codeBuffer.toString();
   code = code.replace('width="24" height="24"', `width={size} height={size}`);
 
+  //Swap default color with 'currentcolor' to allow assigning color via a prop.
   const defaultColor = '#0A0A0B';
-  code = code.replace('width="24" height="24"', `width={size} height={size}`);
+  code = code.replace(/#0A0A0B/g, 'currentcolor');
 
 
   // const svgCode = await processSvg(code)
