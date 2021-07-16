@@ -1,6 +1,6 @@
 {
   "name": "datahub-react-icon",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Icon automation workflow with Figma for ConvertLab",
   "main": "dist/index.js",
   "typings": "dist/icons.d.ts",
