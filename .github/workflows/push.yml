@@ -28,7 +28,7 @@ jobs:
     - run: yarn generate
     - run: yarn build:bundle
     - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-    - run: npm publish --access public
+    - run: yarn publish --verbose
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     - run: yarn build
