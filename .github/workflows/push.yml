@@ -28,10 +28,10 @@ jobs:
     - run: yarn generate
     - run: yarn build:bundle
     - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-    - run: yarn publish
+    - run: npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - run: npm publish --access public
+    - run: yarn build
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
