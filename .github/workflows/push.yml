@@ -1,4 +1,4 @@
-name: icon-automation1
+name: icon-automation
 on:
   push:
     branches:
