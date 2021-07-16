@@ -1,4 +1,4 @@
-# Icon Automation Workflow for convertlab datahub
+# convertlab datahub
 
 It's a repository for [Figma Icon Automation Plugin](https://github.com/leadream/figma-icon-automation).
 
