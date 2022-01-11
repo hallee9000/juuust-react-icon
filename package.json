@@ -1,6 +1,6 @@
 {
   "name": "@tant/icons",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "access": "public",
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
