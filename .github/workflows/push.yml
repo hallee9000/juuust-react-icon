@@ -28,8 +28,8 @@ jobs:
     - run: yarn generate
     - run: yarn build:bundle
     - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-    - run: echo "@tant:registry=https://registry.npmjs.org/" > ~/.npmrc
-    - run: echo "scope=tant" > ~/.npmrc
+    - run: echo "@tant:registry=https://registry.npmjs.org/" >> ~/.npmrc
+    - run: echo "scope=tant" >> ~/.npmrc
     - run: yarn publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
