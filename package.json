@@ -1,6 +1,6 @@
 {
   "name": "@tant/icons",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.com/"
