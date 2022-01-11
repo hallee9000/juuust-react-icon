@@ -1,10 +1,6 @@
 {
-  "name": "@tant/icons",
+  "name": "tant-icons",
   "version": "0.1.13",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.com/"
-  },
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
   "module": "dist/juuust-react-icon.esm.js",
