@@ -1,5 +1,5 @@
 {
-  "name": "tant-icons",
+  "name": "@tant/icons",
   "version": "0.1.14",
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
@@ -29,6 +29,10 @@
     "build:bundle": "sudo rm -rf dist && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js",
     "dev": "rollup -w -c ./build/rollup.config.dev.js",
     "build": "rollup -c ./build/rollup.config.prod.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.com/"
   },
   "config": {
     "style": "fill"
