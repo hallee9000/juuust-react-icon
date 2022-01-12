@@ -6,7 +6,8 @@
   "module": "dist/juuust-react-icon.esm.js",
   "typings": "dist/icons.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "package.json"
   ],
   "repository": "https://github.com/td-fe/tant-icons.git",
   "author": "td-fe",
