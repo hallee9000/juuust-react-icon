@@ -1,1 +1,3 @@
 # tant-icons
+
+## usage
