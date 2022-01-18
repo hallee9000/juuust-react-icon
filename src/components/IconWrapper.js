@@ -6,7 +6,11 @@ const IconWrapper = styled.a`
   flex-direction: column;
   align-items: center;
   svg{
-    margin: 36px 0;
+    margin: 8px 0;
+  }
+  
+  span {
+    line-height: '30px'
   }
 `
 
