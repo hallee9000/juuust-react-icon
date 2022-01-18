@@ -8,5 +8,5 @@ const Header = styled.header`
 
 export default () =>
   <Header>
-    <h1>TA Beautiful Icons</h1>
+    <h1>TA Beautiful Icons（双击复制）</h1>
   </Header>
