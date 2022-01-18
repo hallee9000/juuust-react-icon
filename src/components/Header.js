@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Header = styled.header`
   display: block;
-  text-align: 'center';
+  text-align: center;
 `
 
 export default () =>
