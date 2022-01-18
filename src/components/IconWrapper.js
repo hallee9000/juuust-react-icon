@@ -10,7 +10,7 @@ const IconWrapper = styled.a`
   }
   
   span {
-    line-height: '30px'
+    line-height: 30px
   }
 `
 
