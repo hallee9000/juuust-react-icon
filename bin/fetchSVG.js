@@ -12,7 +12,7 @@ const {FIGMA_TOKEN, FIGMA_FILE_URL} = {
 
 const options = {
   format: 'svg',
-  outputDir: './src/',
+  outputDir: '../src/',
   scale: '1'
 }
 
