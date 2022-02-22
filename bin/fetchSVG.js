@@ -4,7 +4,11 @@ const {join, resolve} = require('path')
 const Figma = require('figma-js')
 const PQueue = require('p-queue')
 require('dotenv').config()
-const {FIGMA_TOKEN, FIGMA_FILE_URL} = process.env
+const {FIGMA_TOKEN, FIGMA_FILE_URL} = {
+  ...process.env,
+  FIGMA_TOKEN: '330013-acb02b84-c4fc-41f0-b219-53979e6bca57',
+  FIGMA_FILE_URL: 'https://www.figma.com/file/WQTCgsKXiS4DfsDPtHGEpk/TA%E5%9B%BE%E5%BD%A2%E5%BA%93-(%E6%AD%A3%E5%BC%8F%E7%89%88)?node-id=1208%3A279'
+}
 
 const options = {
   format: 'svg',
@@ -39,9 +43,7 @@ if (!fileId) {
 
 console.log(`Exporting ${FIGMA_FILE_URL} components`)
 client.file(fileId)
-
   .then(({ data }) => {
-    console.log('Processing response')
     const components = {}
 
     function check(c) {
@@ -50,14 +52,16 @@ client.file(fileId)
         const {description = '', key} = data.components[c.id]
         const {width, height} = c.absoluteBoundingBox
 
-        components[id] = {
-          name,
-          id,
-          key,
-          file: fileId,
-          description,
-          width,
-          height
+        if (!name.startsWith('pic-')) {
+          components[id] = {
+            name: `ta-${name}`,
+            id,
+            key,
+            file: fileId,
+            description,
+            width: 16,
+            height: 16
+          }
         }
       } else if (c.children) {
         // eslint-disable-next-line github/array-foreach
@@ -69,6 +73,8 @@ client.file(fileId)
     if (Object.values(components).length === 0) {
       throw Error('No components found!')
     }
+
+    console.log(components)
     console.log(`${Object.values(components).length} components found in the figma file`)
     return components
   })

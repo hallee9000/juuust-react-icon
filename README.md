@@ -1,6 +1,5 @@
 # tant-icons
 
 ## usage
-
-## website
+## icon preview url
 https://td-fe.github.io/tant-icons/

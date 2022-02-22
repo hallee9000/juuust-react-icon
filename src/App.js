@@ -10,8 +10,12 @@ const Container = styled.ul`
   justify-items: stretch;
   align-items: stretch;
   margin: 0;
-  padding: 0 0 50px 0;
+  padding: 0;
   list-style: none;
+
+  & > li {
+    margin-bottom: 10px;
+  }
 `
 
 class List extends React.Component {
