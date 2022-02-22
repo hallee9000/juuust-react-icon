@@ -37,7 +37,7 @@ if (!fileId) {
   }
 }
 
-console.log(`Exporting ${FIGMA_FILE_URL} components`)
+console.log(`Exporting ${FIGMA_FILE_URL} xxx components`)
 client.file(fileId)
   .then(({ data }) => {
     const components = {}
@@ -70,11 +70,11 @@ client.file(fileId)
       throw Error('No components found!')
     }
   
-    console.log(`${Object.values(components).length} components found in the figma file`)
+    console.log(`${Object.values(components).length} components found in the figma file xxx`)
     return components
   })
   .then(components => {
-    console.log('Getting export urls')
+    console.log('Getting export urls xxx')
     return client.fileImages(
       fileId,
       {
