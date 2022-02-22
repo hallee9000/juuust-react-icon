@@ -73,8 +73,7 @@ client.file(fileId)
     if (Object.values(components).length === 0) {
       throw Error('No components found!')
     }
-
-    console.log(components)
+  
     console.log(`${Object.values(components).length} components found in the figma file`)
     return components
   })
