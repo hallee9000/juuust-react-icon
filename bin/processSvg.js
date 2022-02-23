@@ -15,12 +15,12 @@ function CamelCase(str) {
  * @param {string} svg - An SVG string.
  * @returns {Promise<string>}
  */
-function optimize(svg) {
+function optimize(svg, hasColor = false) {
   const svgo = new Svgo({
     plugins: [
       { convertShapeToPath: false },
       { mergePaths: false },
-      { removeAttrs: { attrs: '(fill|stroke.*)' } },
+      ...hasColor ? [] : [{ removeAttrs: { attrs: '(fill|stroke.*)' } }],
       { removeTitle: true },
     ],
   });
@@ -45,8 +45,8 @@ function removeSVGElement(svg) {
  * @param {string} svg - An SVG string.
  * @param {Promise<string>}
  */
-async function processSvg(svg) {
-  const optimized = await optimize(svg)
+async function processSvg(svg, hasColor) {
+  const optimized = await optimize(svg, hasColor)
     // remove semicolon inserted by prettier
     // because prettier thinks it's formatting JSX not HTML
     .then(svg => svg.replace(/;/g, ''))
