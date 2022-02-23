@@ -88,14 +88,16 @@ const generateIconCode = async ({name}) => {
 
 // append export code to icons.js
 const appendToIconsIndex = ({ComponentName, name}) => {
-  const exportString = `export { default as ${ComponentName} } from './icons/${name}';\r\n`;
+  const exportComponentName = `Ta${ComponentName}`;
+  
+  const exportString = `export { default as ${exportComponentName} } from './icons/${name}';\r\n`;
   fs.appendFileSync(
     path.join(rootDir, 'src', 'icons.js'),
     exportString,
     'utf-8',
   );
 
-  const exportTypeString = `export const ${ComponentName}: Icon;\n`;
+  const exportTypeString = `export const ${exportComponentName}: Icon;\n`;
   fs.appendFileSync(
     path.join(rootDir, 'src', 'icons.d.ts'),
     exportTypeString,
@@ -109,11 +111,10 @@ Object
   .keys(icons)
   .map(key => ({
     ...icons[key],
-    name: `ta-${icons[key].name}`,
     width: 16,
     height:16,
   }))
-  .filter((item) => !item.name.startsWith('ta-pic-'))
+  .filter((item) => !item.name.startsWith('pic-'))
   .forEach(({name}) => {
     generateIconCode({name})
       .then(({ComponentName, name}) => {
