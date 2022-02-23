@@ -107,10 +107,17 @@ generateIconsIndex()
 
 Object
   .keys(icons)
-  .map(key => icons[key])
+  .map(key => ({
+    ...icons[key],
+    name: `ta-${icon[key].name}`
+    width: 16,
+    height:16
+  }))
+  .filter((item) => !item.name.startsWith('ta-pic-'))
   .forEach(({name}) => {
     generateIconCode({name})
       .then(({ComponentName, name}) => {
         appendToIconsIndex({ComponentName, name})
       })
   })
+
