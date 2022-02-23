@@ -67,7 +67,7 @@ const generateIconCode = async ({name}) => {
   const code = fs.readFileSync(location)
   const svgCode = await processSvg(code, names.name.endsWith('-cl'))
   const ComponentName = names.componentName
-  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style, names.name.endsWith('-sm')), names.style), svgCode)
   const component = format({
     text: element,
     eslintConfig: {
