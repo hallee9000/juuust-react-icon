@@ -109,11 +109,7 @@ generateIconsIndex()
 
 Object
   .keys(icons)
-  .map(key => ({
-    ...icons[key],
-    width: 16,
-    height:16,
-  }))
+  .map(key => icons[key])
   .filter((item) => !item.name.startsWith('pic-'))
   .forEach(({name}) => {
     generateIconCode({name})
