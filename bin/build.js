@@ -109,7 +109,7 @@ Object
   .keys(icons)
   .map(key => ({
     ...icons[key],
-    name: `ta-${icon[key].name}`,
+    name: `ta-${icons[key].name}`,
     width: 16,
     height:16,
   }))
