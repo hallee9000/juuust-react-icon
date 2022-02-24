@@ -35,9 +35,9 @@ const generateIconsIndex = () => {
   type Icon = ComponentType<Props>;
   `;
 
-  fs.writeFileSync(path.join(rootDir, 'src', 'icons.js'), '', 'utf-8');
+  fs.writeFileSync(path.join(rootDir, 'src', 'index.js'), '', 'utf-8');
   fs.writeFileSync(
-    path.join(rootDir, 'src', 'icons.d.ts'),
+    path.join(rootDir, 'src', 'index.d.ts'),
     initialTypeDefinitions,
     'utf-8',
   );
@@ -92,14 +92,14 @@ const appendToIconsIndex = ({ComponentName, name}) => {
   
   const exportString = `export { default as ${exportComponentName} } from './icons/${name}';\r\n`;
   fs.appendFileSync(
-    path.join(rootDir, 'src', 'icons.js'),
+    path.join(rootDir, 'src', 'index.js'),
     exportString,
     'utf-8',
   );
 
   const exportTypeString = `export const ${exportComponentName}: Icon;\n`;
   fs.appendFileSync(
-    path.join(rootDir, 'src', 'icons.d.ts'),
+    path.join(rootDir, 'src', 'index.d.ts'),
     exportTypeString,
     'utf-8',
   );

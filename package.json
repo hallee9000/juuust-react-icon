@@ -2,8 +2,8 @@
   "name": "@tant/icons",
   "version": "1.0.4",
   "description": "Icon automation workflow with Figma",
-  "main": "dist/tant-icons.cjs.js",
-  "module": "dist/tant-icons.esm.js",
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.js",
   "typings": "dist/icons.d.ts",
   "sideEffect": false,
   "files": [
@@ -28,7 +28,7 @@
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
     "generate": "sudo rm -rf src/icons && node bin/build.js",
-    "build:bundle": "sudo rm -rf dist && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js",
+    "build:bundle": "sudo rm -rf dist &&  father-build && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js && rm -rf es  && rm -rf lib",
     "dev": "rollup -w -c ./build/rollup.config.dev.js",
     "build": "rollup -c ./build/rollup.config.prod.js"
   },
@@ -59,6 +59,7 @@
     "cheerio": "^1.0.0-rc.3",
     "concurrently": "^4.1.1",
     "dotenv": "^8.2.0",
+    "father-build": "^1.21.1",
     "figma-js": "^1.11.0",
     "fs-extra": "^9.0.1",
     "got": "^11.5.1",

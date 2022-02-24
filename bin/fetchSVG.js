@@ -1,129 +1,154 @@
 // 不会用
 
-const got = require('got')
-const {ensureDir, writeFile} = require('fs-extra')
-const {join, resolve} = require('path')
-const Figma = require('figma-js')
-const PQueue = require('p-queue')
-require('dotenv').config()
-const {FIGMA_TOKEN, FIGMA_FILE_URL} = process.env
+const got = require("got");
+const { ensureDir, writeFile } = require("fs-extra");
+const { join, resolve } = require("path");
+const Figma = require("figma-js");
+const PQueue = require("p-queue");
+require("dotenv").config();
+const { FIGMA_TOKEN, FIGMA_FILE_URL } = {
+  FIGMA_FILE_URL:
+    "https://www.figma.com/file/WQTCgsKXiS4DfsDPtHGEpk/TA%E5%9B%BE%E5%BD%A2%E5%BA%93-(%E6%AD%A3%E5%BC%8F%E7%89%88)?node-id=926%3A0",
+  FIGMA_TOKEN: "331213-470d2640-0ce5-4e6e-8264-05a8daa338a1",
+  ...process.env,
+};
 
 const options = {
-  format: 'svg',
-  outputDir: './src/',
-  scale: '1'
-}
+  format: "svg",
+  outputDir: "../src/",
+  scale: "1",
+};
 
-for(const arg of process.argv.slice(2)) {
-  const [param, value] = arg.split('=')
-  if(options[param]) {
-    options[param] = value
+for (const arg of process.argv.slice(2)) {
+  const [param, value] = arg.split("=");
+  if (options[param]) {
+    options[param] = value;
   }
 }
 
-if(!FIGMA_TOKEN) {
-  throw Error('Cannot find FIGMA_TOKEN in process!')
+if (!FIGMA_TOKEN) {
+  throw Error("Cannot find FIGMA_TOKEN in process!");
 }
 
 const client = Figma.Client({
-  personalAccessToken: FIGMA_TOKEN
-})
+  personalAccessToken: FIGMA_TOKEN,
+});
 
 // Fail if there's no figma file key
-let fileId = null
+let fileId = null;
 if (!fileId) {
   try {
-    fileId = FIGMA_FILE_URL.match(/file\/([a-z0-9]+)\//i)[1]
+    fileId = FIGMA_FILE_URL.match(/file\/([a-z0-9]+)\//i)[1];
   } catch (e) {
-    throw Error('Cannot find FIGMA_FILE_URL key in process!')
+    throw Error("Cannot find FIGMA_FILE_URL key in process!");
   }
 }
 
-console.log(`Exporting ${FIGMA_FILE_URL} xxx components`)
-client.file(fileId)
+console.log(`Exporting ${FIGMA_FILE_URL} components`);
+client
+  .file(fileId)
   .then(({ data }) => {
-    const components = {}
+    const components = {};
 
     function check(c) {
-      if (c.type === 'COMPONENT') {
-        const {name, id} = c
-        const {description = '', key} = data.components[c.id]
-        const {width, height} = c.absoluteBoundingBox
+      if (c.type === "COMPONENT") {
+        const { name, id } = c;
+        const { description = "", key } = data.components[c.id];
+        const { width, height } = c.absoluteBoundingBox;
 
-        if (!name.startsWith('pic-')) {
-          components[id] = {
-            name: `ta-${name}`,
-            id,
-            key,
-            file: fileId,
-            description,
-            width: 16,
-            height: 16
-          }
-        }
+        components[id] = {
+          name,
+          id,
+          key,
+          file: fileId,
+          description,
+          width: 16,
+          height: 16,
+        };
       } else if (c.children) {
         // eslint-disable-next-line github/array-foreach
-        c.children.forEach(check)
+        c.children.forEach(check);
       }
     }
 
-    data.document.children.forEach(check)
+    data.document.children.forEach(check);
     if (Object.values(components).length === 0) {
-      throw Error('No components found!')
+      throw Error("No components found!");
     }
-  
-    console.log(`${Object.values(components).length} components found in the figma file xxx`)
-    return components
+
+    console.log(
+      `${
+        Object.values(components).length
+      } components found in the figma file`
+    );
+    return components;
   })
-  .then(components => {
-    console.log('Getting export urls xxx')
-    return client.fileImages(
-      fileId,
-      {
+  .then((components) => {
+    console.log("Getting export urls");
+    return client
+      .fileImages(fileId, {
         format: options.format,
         ids: Object.keys(components),
-        scale: options.scale
-      }
-    ).then(({data}) => {
-      for(const id of Object.keys(data.images)) {
-        components[id].image = data.images[id]
-      }
-      return components
-    })
+        scale: options.scale,
+      })
+      .then(({ data }) => {
+        for (const id of Object.keys(data.images)) {
+          components[id].image = data.images[id];
+        }
+        return components;
+      });
   })
-  .then(components => {
+  .then((components) => {
     return ensureDir(join(options.outputDir))
-      .then(() => writeFile(resolve(options.outputDir, 'data.json'), JSON.stringify(components), 'utf8'))
-      .then(() => components)
+      .then(() =>
+        writeFile(
+          resolve(options.outputDir, "data.json"),
+          JSON.stringify(components),
+          "utf8"
+        )
+      )
+      .then(() => components);
   })
-  .then(components => {
+  .then((components) => {
     const contentTypes = {
-      'svg': 'image/svg+xml',
-      'png': 'image/png',
-      'jpg': 'image/jpeg'
-    }
-    return queueTasks(Object.values(components).map(component => () => {
-      return got.get(component.image, {
-        headers: {
-          'Content-Type': contentTypes[options.format]
-        },
-        encoding: (options.format === 'svg' ? 'utf8' : null)
+      svg: "image/svg+xml",
+      png: "image/png",
+      jpg: "image/jpeg",
+    };
+    return queueTasks(
+      Object.values(components).map((component) => () => {
+        return got
+          .get(component.image, {
+            headers: {
+              "Content-Type": contentTypes[options.format],
+            },
+            encoding: options.format === "svg" ? "utf8" : null,
+          })
+          .then((response) => {
+            return ensureDir(join(options.outputDir, options.format)).then(() =>
+              writeFile(
+                join(
+                  options.outputDir,
+                  options.format,
+                  `${component.name}.${options.format}`
+                ),
+                response.body,
+                options.format === "svg" ? "utf8" : "binary"
+              )
+            );
+          });
       })
-      .then(response => {
-        return ensureDir(join(options.outputDir, options.format))
-          .then(() => writeFile(join(options.outputDir, options.format, `${component.name}.${options.format}`), response.body, (options.format === 'svg' ? 'utf8' : 'binary')))
-      })
-    }))
+    );
   })
-  .catch(error => {
-    throw Error(`Error fetching components from Figma: ${error}`)
-  })
+  .catch((error) => {
+    throw Error(`Error fetching components from Figma: ${error}`);
+  });
 
 function queueTasks(tasks, options) {
-  const queue = new PQueue(Object.assign({concurrency: 3}, options))
+  const queue = new PQueue(Object.assign({ concurrency: 3 }, options));
   for (const task of tasks) {
-    queue.add(task)
+    queue.add(task);
   }
-  queue.start()
-  return queue.onIdle()
+  queue.start();
+  return queue.onIdle();
 }
