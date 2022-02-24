@@ -9,4 +9,5 @@ yarn-error.log
 lib
 es
 src/icons
+src/svg
 src/data.json
