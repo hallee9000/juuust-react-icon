@@ -65,9 +65,9 @@ const generateIconCode = async ({name}) => {
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
   const code = fs.readFileSync(location)
-  const svgCode = await processSvg(code, ['logo-dingding', 'logo-wecom', 'logo-wechat', 'logo-feishu', 'logo-king' ].includes(names.name))
+  const svgCode = await processSvg(code, names.name.endsWith('-cl'))
   const ComponentName = names.componentName
-  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style), names.style), svgCode)
+  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style, names.name.endsWith('-sm')), names.style), svgCode)
   const component = format({
     text: element,
     eslintConfig: {
@@ -109,11 +109,7 @@ generateIconsIndex()
 
 Object
   .keys(icons)
-  .map(key => ({
-    ...icons[key],
-    width: 16,
-    height:16,
-  }))
+  .map(key => icons[key])
   .filter((item) => !item.name.startsWith('pic-'))
   .forEach(({name}) => {
     generateIconCode({name})
