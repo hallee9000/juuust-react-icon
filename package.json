@@ -1,10 +1,10 @@
 {
   "name": "@tant/icons",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Icon automation workflow with Figma",
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
-  "typings": "dist/icons.d.ts",
+  "typings": "dist/index.d.ts",
   "sideEffect": false,
   "files": [
     "dist",
