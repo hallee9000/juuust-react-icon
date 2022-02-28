@@ -26,6 +26,10 @@ const Container = styled.ul`
     box-sizing: border-box;
     cursor: pointer;
 
+    a {
+      color: rgb(39, 54, 102) !important;
+    }
+
     span {
       user-select: none;
     }
