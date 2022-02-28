@@ -7,7 +7,7 @@ const IconWrapper = styled.a`
   align-items: center;
   
   span {
-    line-height: 50px
+    line-height: 40px
   }
 `
 
