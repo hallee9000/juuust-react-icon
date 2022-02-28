@@ -72,6 +72,11 @@ const HeaderWrapper = styled.div`
     color: rgb(39, 54, 102);
     font-size: 12px;
     transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &::placeholder {
+      color: #dcdfe6;
+      font-style: italic;
+    }
   }
 `;
 
@@ -97,7 +102,7 @@ const List = () => {
     >
       <HeaderWrapper>
         <Header />
-        <input type="text" value={query} onChange={onQueryChange} />
+        <input type="text" value={query} onChange={onQueryChange} placeholder="搜索点啥子" />
       </HeaderWrapper>
       <Container>
         {iconKeysRef.current.map((key, index) => {
