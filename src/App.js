@@ -102,7 +102,7 @@ const List = () => {
     >
       <HeaderWrapper>
         <Header />
-        <input type="text" value={query} onChange={onQueryChange} placeholder="搜索点啥子" />
+        <input type="text" value={query} onChange={onQueryChange} placeholder="输入点啥子..." />
       </HeaderWrapper>
       <Container>
         {iconKeysRef.current.map((key, index) => {
