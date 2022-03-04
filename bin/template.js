@@ -25,9 +25,12 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   import PropTypes from 'prop-types';
 
   const ${ComponentName} = (props) => {
-    const { color, size, ...otherProps } = props;
+    const { color, size, style, ...otherProps } = props;
     return (
-      <svg ${attrs}>
+      <svg ${attrs} style={{
+        ...style,
+        cursor: 'pointer'
+      }} >
         ${svgCode}
       </svg>
     )
