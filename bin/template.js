@@ -31,8 +31,8 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }}';
 
   const ${ComponentName} = (props) => {
-    const { color, size, spin, style, ...otherProps } = props;
-    return <>
+    const { color, size, spin, style, className, ...otherProps } = props;
+    return <span className={className}>
       <style children={loadingCircleStyle} />
       <svg ${attrs} style={{
         ...style,
@@ -46,11 +46,11 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
         }} >
         ${svgCode}
       </svg>
-    </>
+    </span>
   };
 
   ${ComponentName}.propTypes = {
-    spin: PropTypes.boolean,
+    spin: PropTypes.bool,
     color: PropTypes.string,
     size: PropTypes.oneOfType([
       PropTypes.string,

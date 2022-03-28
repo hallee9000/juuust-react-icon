@@ -4,6 +4,7 @@
   interface Props extends SVGAttributes<SVGElement> {
     color?: string;
     size?: string | number;
+    spin?: boolean;
   }
 
   type Icon = ComponentType<Props>;
