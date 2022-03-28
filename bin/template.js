@@ -33,7 +33,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   const ${ComponentName} = (props) => {
     const { color, size, spin, style, className, ...otherProps } = props;
     return <span className={className} style={{
-      display: 'flex',
+      display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
     }}>
