@@ -28,15 +28,11 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   import React from 'react';
   import PropTypes from 'prop-types';
 
-  const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }}';
+  const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }} .tant-icon-span { display: inline-flex; align-items: center; justify-content: center }';
 
   const ${ComponentName} = (props) => {
     const { color, size, spin, style, className, ...otherProps } = props;
-    return <span className={className} style={{
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-    }}>
+    return <span className={className ? 'tant-icon-span' + className : 'tant-icon-span'}>
       <style children={loadingCircleStyle} />
       <svg ${attrs} style={{
         ...style,
