@@ -32,7 +32,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
 
   const ${ComponentName} = (props) => {
     const { color, size, spin, style, className, ...otherProps } = props;
-    return <span className={className ? 'tant-icon-span' + className : 'tant-icon-span'}>
+    return <span className={className ? 'tant-icon-span ' + className : 'tant-icon-span'}>
       <style children={loadingCircleStyle} />
       <svg ${attrs} style={{
         ...style,
