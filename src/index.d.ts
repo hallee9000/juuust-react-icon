@@ -1,5 +1,5 @@
 /// <reference types="react" />
-  import { ComponentType, SVGAttributes } from 'react';
+  import { FC, SVGAttributes } from 'react';
 
   interface Props extends SVGAttributes<SVGElement> {
     color?: string;
@@ -7,7 +7,7 @@
     spin?: boolean;
   }
 
-  type Icon = ComponentType<Props>;
+  type Icon = FC<Props>;
   export const TaSSpace: Icon;
 export const TaProject: Icon;
 export const TaSpace: Icon;
