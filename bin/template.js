@@ -28,28 +28,31 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   import React from 'react';
   import PropTypes from 'prop-types';
 
-  const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }} .tant-icon-span { display: inline-flex; align-items: center; justify-content: center }';
+  const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }} .tant-icon-span { display: inline-flex; align-items: center; justify-content: center } .tant-icon-span > svg { cursor: pointer }';
 
   const ${ComponentName} = (props) => {
-    const { color, size, spin, style, className, ...otherProps } = props;
+    const { color, size, spin, style, className, iconClassName, ...otherProps } = props;
     return <span className={className ? 'tant-icon-span ' + className : 'tant-icon-span'}>
       <style children={loadingCircleStyle} />
-      <svg ${attrs} style={{
-        cursor: 'pointer',
-        ...style,
-        ...(spin ? {
-          animationDuration: '1s',
-          animationIterationCount: 'infinite',
-          animationName: 'loadingCircle',
-          animationTimingFunction: 'linear'
-        } : {}),
-        }} >
+      <svg ${attrs}
+        className={iconClassName}
+        style={{
+          ...style,
+          ...(spin ? {
+            animationDuration: '1s',
+            animationIterationCount: 'infinite',
+            animationName: 'loadingCircle',
+            animationTimingFunction: 'linear'
+          } : {}),
+        }}
+      >
         ${svgCode}
       </svg>
     </span>
   };
 
   ${ComponentName}.propTypes = {
+    iconClassName: PropTypes.string,
     spin: PropTypes.bool,
     color: PropTypes.string,
     size: PropTypes.oneOfType([
