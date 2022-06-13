@@ -35,6 +35,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
     return <span className={className ? 'tant-icon-span ' + className : 'tant-icon-span'}>
       <style children={loadingCircleStyle} />
       <svg ${attrs} style={{
+        cursor: 'pointer',
         ...style,
         ...(spin ? {
           animationDuration: '1s',
@@ -42,7 +43,6 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
           animationName: 'loadingCircle',
           animationTimingFunction: 'linear'
         } : {}),
-        cursor: 'pointer'
         }} >
         ${svgCode}
       </svg>
