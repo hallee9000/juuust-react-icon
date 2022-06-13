@@ -1,27 +1,27 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable prefer-template */
-const path = require('path')
-const fs = require('fs')
-const format = require('prettier-eslint')
-const processSvg = require('./processSvg')
-const { parseName } = require('./utils')
-const defaultStyle = process.env.npm_package_config_style || 'stroke'
-const { getAttrs, getElementCode } = require('./template')
-const icons = require('../src/data.json')
+const path = require("path");
+const fs = require("fs");
+const format = require("prettier-eslint");
+const processSvg = require("./processSvg");
+const { parseName } = require("./utils");
+const defaultStyle = process.env.npm_package_config_style || "stroke";
+const { getAttrs, getElementCode } = require("./template");
+const icons = require("../src/data.json");
 
-const rootDir = path.join(__dirname, '..')
+const rootDir = path.join(__dirname, "..");
 
 // where icons code in
-const srcDir = path.join(rootDir, 'src')
-const iconsDir = path.join(rootDir, 'src/icons')
+const srcDir = path.join(rootDir, "src");
+const iconsDir = path.join(rootDir, "src/icons");
 
 // generate icons.js and icons.d.ts file
 const generateIconsIndex = () => {
   if (!fs.existsSync(srcDir)) {
-    fs.mkdirSync(srcDir)
-    fs.mkdirSync(iconsDir)
+    fs.mkdirSync(srcDir);
+    fs.mkdirSync(iconsDir);
   } else if (!fs.existsSync(iconsDir)) {
-    fs.mkdirSync(iconsDir)
+    fs.mkdirSync(iconsDir);
   }
 
   const initialTypeDefinitions = `/// <reference types="react" />
@@ -31,91 +31,98 @@ const generateIconsIndex = () => {
     color?: string;
     size?: string | number;
     spin?: boolean;
+    iconClassName?: string,
   }
 
   type Icon = FC<Props>;
   `;
 
-  fs.writeFileSync(path.join(rootDir, 'src', 'index.js'), '', 'utf-8');
+  fs.writeFileSync(path.join(rootDir, "src", "index.js"), "", "utf-8");
   fs.writeFileSync(
-    path.join(rootDir, 'src', 'index.d.ts'),
+    path.join(rootDir, "src", "index.d.ts"),
     initialTypeDefinitions,
-    'utf-8',
+    "utf-8"
   );
-}
+};
 
 // generate attributes code
 const attrsToString = (attrs, style) => {
-  console.log('style: ', style)
-  return Object.keys(attrs).map((key) => {
-    // should distinguish fill or stroke
-    if (key === 'width' || key === 'height' || key === style) {
-      return key + '={' + attrs[key] + '}';
-    }
-    if (key === 'otherProps') {
-      return '{...otherProps}';
-    }
-    return key + '="' + attrs[key] + '"';
-  }).join(' ');
+  console.log("style: ", style);
+  return Object.keys(attrs)
+    .map((key) => {
+      // should distinguish fill or stroke
+      if (key === "width" || key === "height" || key === style) {
+        return key + "={" + attrs[key] + "}";
+      }
+      if (key === "otherProps") {
+        return "{...otherProps}";
+      }
+      return key + '="' + attrs[key] + '"';
+    })
+    .join(" ");
 };
 
 // generate icon code separately
-const generateIconCode = async ({name}) => {
-  const names = parseName(name, defaultStyle)
-  console.log(names)
-  const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
-  const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
-  const code = fs.readFileSync(location)
-  const svgCode = await processSvg(code, names.name.endsWith('-cl'))
-  const ComponentName = names.componentName
-  const element = getElementCode(ComponentName, attrsToString(getAttrs(names.style, names.name.endsWith('-sm')), names.style), svgCode)
+const generateIconCode = async ({ name }) => {
+  const names = parseName(name, defaultStyle);
+  console.log(names);
+  const location = path.join(rootDir, "src/svg", `${names.name}.svg`);
+  const destination = path.join(rootDir, "src/icons", `${names.name}.js`);
+  const code = fs.readFileSync(location);
+  const svgCode = await processSvg(code, names.name.endsWith("-cl"));
+  const ComponentName = names.componentName;
+  const element = getElementCode(
+    ComponentName,
+    attrsToString(
+      getAttrs(names.style, names.name.endsWith("-sm")),
+      names.style
+    ),
+    svgCode
+  );
   const component = format({
     text: element,
     eslintConfig: {
-      extends: 'airbnb',
+      extends: "airbnb",
     },
     prettierOptions: {
       bracketSpacing: true,
       singleQuote: true,
-      parser: 'flow',
+      parser: "flow",
     },
   });
 
-  fs.writeFileSync(destination, component, 'utf-8');
+  fs.writeFileSync(destination, component, "utf-8");
 
-  console.log('Successfully built', ComponentName);
-  return {ComponentName, name: names.name}
-}
+  console.log("Successfully built", ComponentName);
+  return { ComponentName, name: names.name };
+};
 
 // append export code to icons.js
-const appendToIconsIndex = ({ComponentName, name}) => {
+const appendToIconsIndex = ({ ComponentName, name }) => {
   const exportComponentName = `Ta${ComponentName}`;
-  
+
   const exportString = `export { default as ${exportComponentName} } from './icons/${name}';\r\n`;
   fs.appendFileSync(
-    path.join(rootDir, 'src', 'index.js'),
+    path.join(rootDir, "src", "index.js"),
     exportString,
-    'utf-8',
+    "utf-8"
   );
 
   const exportTypeString = `export const ${exportComponentName}: Icon;\n`;
   fs.appendFileSync(
-    path.join(rootDir, 'src', 'index.d.ts'),
+    path.join(rootDir, "src", "index.d.ts"),
     exportTypeString,
-    'utf-8',
+    "utf-8"
   );
-}
+};
 
-generateIconsIndex()
+generateIconsIndex();
 
-Object
-  .keys(icons)
-  .map(key => icons[key])
-  .filter((item) => !item.name.startsWith('pic-'))
-  .forEach(({name}) => {
-    generateIconCode({name})
-      .then(({ComponentName, name}) => {
-        appendToIconsIndex({ComponentName, name})
-      })
-  })
-
+Object.keys(icons)
+  .map((key) => icons[key])
+  .filter((item) => !item.name.startsWith("pic-"))
+  .forEach(({ name }) => {
+    generateIconCode({ name }).then(({ ComponentName, name }) => {
+      appendToIconsIndex({ ComponentName, name });
+    });
+  });
