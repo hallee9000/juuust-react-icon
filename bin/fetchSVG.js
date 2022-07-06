@@ -57,8 +57,8 @@ client
           key,
           file: fileId,
           description,
-          width: 16,
-          height: 16,
+          width: '1em',
+          height: '1em',
         };
       } else if (c.children) {
         // eslint-disable-next-line github/array-foreach

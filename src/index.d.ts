@@ -5,6 +5,7 @@
     color?: string;
     size?: string | number;
     spin?: boolean;
+    iconClassName?: string,
   }
 
   type Icon = FC<Props>;
