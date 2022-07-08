@@ -28,7 +28,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
   import React from 'react';
   import PropTypes from 'prop-types';
 
-  const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }} .tant-icon-span { display: inline-flex; align-items: center; justify-content: center } .tant-icon-span > svg { cursor: pointer }';
+  const loadingCircleStyle = '@keyframes loadingCircle { 100% { transform: rotate(360deg) }} .tant-icon-span > svg { cursor: pointer }';
 
   const ${ComponentName} = (props) => {
     const { color, size, spin, style, className, iconClassName, ...otherProps } = props;
