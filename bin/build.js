@@ -31,7 +31,7 @@ const generateIconsIndex = () => {
     color?: string;
     size?: string | number;
     spin?: boolean;
-    iconClassName?: string,
+    iconClassName?: string;
   }
 
   type Icon = FC<Props>;
