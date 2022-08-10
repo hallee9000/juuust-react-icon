@@ -1,0 +1,66 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const loadingCircleStyle =
+  '@keyframes loadingCircle { 100% { transform: rotate(360deg) }} ';
+
+const LogoAndroidGray = props => {
+  const {
+    color,
+    size,
+    spin,
+    style,
+    className,
+    iconClassName,
+    ...otherProps
+  } = props;
+  return (
+    <span
+      role="img"
+      className={
+        className
+          ? 'tant-icon-span anticon ' + className
+          : 'tant-icon-span anticon'
+      }
+    >
+      <style children={loadingCircleStyle} />
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={size}
+        height={size}
+        viewBox="0 0 24 24"
+        fill={color}
+        {...otherProps}
+        className={iconClassName}
+        style={{
+          ...style,
+          ...(spin
+            ? {
+                animationDuration: '1s',
+                animationIterationCount: 'infinite',
+                animationName: 'loadingCircle',
+                animationTimingFunction: 'linear'
+              }
+            : {})
+        }}
+      >
+        <path d="M19 13H5v7h14v-7zm0-2a7 7 0 00-14 0h14zM6.382 3.968A8.962 8.962 0 0112 2c2.125 0 4.078.736 5.618 1.968l1.453-1.453 1.414 1.414-1.453 1.453A8.962 8.962 0 0121 11v10a1 1 0 01-1 1H4a1 1 0 01-1-1V11c0-2.125.736-4.078 1.968-5.618L3.515 3.93l1.414-1.414 1.453 1.453v-.001zM9 9a1 1 0 110-2 1 1 0 010 2zm6 0a1 1 0 110-2 1 1 0 010 2z"></path>
+      </svg>
+    </span>
+  );
+};
+
+LogoAndroidGray.propTypes = {
+  iconClassName: PropTypes.string,
+  spin: PropTypes.bool,
+  color: PropTypes.string,
+  size: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+};
+
+LogoAndroidGray.defaultProps = {
+  spin: false,
+  color: 'currentColor',
+  size: '1em'
+};
+
+export default LogoAndroidGray;

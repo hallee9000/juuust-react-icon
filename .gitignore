@@ -8,6 +8,3 @@ yarn-error.log
 .DS_Store
 lib
 es
-src/icons
-src/svg
-src/data.json
