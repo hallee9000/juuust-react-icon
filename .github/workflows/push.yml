@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v1
         with:
-          node-version: "10.x"
+          node-version: "16.x"
       - run: echo "${{ secrets.FIGMA_TOKEN }}"
       - run: echo "${{ secrets.FIGMA_FILE_URL }}"
       - run: yarn install
