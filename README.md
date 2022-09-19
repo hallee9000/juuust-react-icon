@@ -6,7 +6,7 @@
 npm install @tant/icons --save
 ```
 
-3. 使用
+2. 使用
 ```
 <TaSSpace size="24" fill="#3AA2EB" />
 ```
