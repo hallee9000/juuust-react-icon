@@ -1,6 +1,6 @@
 {
   "name": "@tant/icons",
-  "version": "1.1.81",
+  "version": "1.2.0",
   "description": "Icon automation workflow with Figma",
   "main": "dist/lib/index.js",
   "module": "dist/es/index.js",
@@ -41,13 +41,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "antd": "~4.16.13",
     "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
   },
   "devDependencies": {
+    "antd": "^4.23.2",
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
