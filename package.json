@@ -41,13 +41,13 @@
   },
   "license": "MIT",
   "dependencies": {
-    "normalize.css": "^8.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "styled-components": "^5.1.1"
   },
   "devDependencies": {
     "antd": "^4.23.2",
+    "normalize.css": "^8.0.1",
+    "styled-components": "^5.1.1",
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
