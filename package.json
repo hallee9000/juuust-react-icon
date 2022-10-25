@@ -1,15 +1,15 @@
 {
-  "name": "juuust-react-icon",
-  "version": "0.2.5",
+  "name": "@lusteck/teste-icons",
+  "version": "0.0.0",
   "description": "Icon automation workflow with Figma",
-  "main": "dist/juuust-react-icon.cjs.js",
-  "module": "dist/juuust-react-icon.esm.js",
+  "main": "dist/teste-icons.cjs.js",
+  "module": "dist/teste-icons.esm.js",
   "typings": "dist/icons.d.ts",
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/leadream/juuust-react-icon.git",
-  "author": "leadream",
+  "repository": "https://github.com/lusteck/teste-icons.git",
+  "author": "lusteck",
   "keywords": [
     "react",
     "icons",
@@ -20,9 +20,9 @@
     "design"
   ],
   "bugs": {
-    "url": "https://github.com/leadream/juuust-react-icon/issues"
+    "url": "https://github.com/lusteck/teste-icons/issues"
   },
-  "homepage": "https://github.com/leadream/juuust-react-icon#readme",
+  "homepage": "https://github.com/lusteck/teste-icons#readme",
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
     "generate": "sudo rm -rf src/icons && node bin/build.js",
@@ -35,10 +35,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "normalize.css": "^8.0.1",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "styled-components": "^5.1.1"
+    "react": "^16.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
