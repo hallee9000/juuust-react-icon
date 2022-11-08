@@ -1,6 +1,6 @@
 {
-  "name": "juuust-react-icon",
-  "version": "0.2.5",
+  "name": "simmo-figma-test",
+  "version": "0.0.0",
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
   "module": "dist/juuust-react-icon.esm.js",
@@ -8,8 +8,8 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/leadream/juuust-react-icon.git",
-  "author": "leadream",
+  "repository": "https://github.com/otter-pictures/figma-to-git",
+  "author": "ss",
   "keywords": [
     "react",
     "icons",
