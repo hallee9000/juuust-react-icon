@@ -33,8 +33,7 @@
     "build": "rollup -c ./build/rollup.config.prod.js"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.com/"
+    "access": "public"
   },
   "config": {
     "style": "fill"
