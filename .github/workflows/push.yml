@@ -30,8 +30,8 @@ jobs:
       - run: yarn generate
       - run: yarn build:bundle
       - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      - run: echo "scope=tant" >> ~/.npmrc
-      - run: echo "@tant:registry=https://registry.npmjs.org/" >> ~/.npmrc
+      # - run: echo "scope=tant" >> ~/.npmrc
+      # - run: echo "@tant:registry=https://registry.npmjs.org/" >> ~/.npmrc
       - run: yarn publish
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
@@ -42,3 +42,39 @@ jobs:
           build_dir: docs
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+
+  tanpm:
+    name: figma icon => ta npm
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "16.x"
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Figma Action
+        uses: primer/figma-action@v1.0.0-alpha.2
+        with:
+          args: "format=svg outputDir=./src/"
+        env:
+          FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+
+      - name: Generate and Build
+        run: |
+          yarn generate
+          yarn build:bundle
+
+      - name: Publish
+        run: |
+          npm set registry https://npm.thinkingdata.cn:3443
+          npm config set //npm.thinkingdata.cn:3443/:_authToken "${TA_NPM_TOKEN}"
+          npm config set //npm.thinkingdata.cn:3443/:always-auth true
+          yarn publish
+        env:
+          TA_NPM_TOKEN: ${{ secrets.TA_NPM_TOKEN }}
+
