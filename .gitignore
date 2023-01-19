@@ -1,6 +1,7 @@
 node_modules
 
 .env
+.yarn
 
 dist
 docs
