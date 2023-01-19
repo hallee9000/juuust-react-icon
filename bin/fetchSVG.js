@@ -69,7 +69,14 @@ client.file(fileId)
     if (Object.values(components).length === 0) {
       throw Error('No components found!')
     }
-    console.log(`${Object.values(components).length} components found in the figma file`)
+    console.log(`${Object.values(components).length} components found in the figma file`);
+    console.log("Adding -fill suffix to component names");
+    Object.values(components).forEach(component => {
+      if (component.name.includes('-fill')) {
+        return;
+      }
+      component.name = component.name.concat('-fill');
+    })
     return components;
   })
   .then(components => {
