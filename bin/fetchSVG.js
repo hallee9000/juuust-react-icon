@@ -45,7 +45,7 @@ client.file(fileId)
     const components = {}
 
     function check(c) {
-      if (c.type === 'COMPONENT') {
+      if (c.type === 'COMPONENT' && c.name.includes('Icons-')) {
         const {name, id} = c
         const {description = '', key} = data.components[c.id]
         const {width, height} = c.absoluteBoundingBox
@@ -70,7 +70,7 @@ client.file(fileId)
       throw Error('No components found!')
     }
     console.log(`${Object.values(components).length} components found in the figma file`)
-    return components
+    return components;
   })
   .then(components => {
     console.log('Getting export urls')
