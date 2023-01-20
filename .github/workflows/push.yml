@@ -6,12 +6,6 @@ on:
     # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
-nodeLinker: pnp
-    npmScopes:
-      bestseller:
-        npmAlwaysAuth: true
-        npmAuthToken: ${{ secrets.NPM_AUTH_TOKEN }}
-        npmRegistryServer: "https://npm.pkg.github.com"
 jobs:
   icon_automation:
     name: figma icon automation
