@@ -61,7 +61,7 @@ const attrsToString = (attrs, style) => {
 // generate icon code separately
 const generateIconCode = async ({name}) => {
   const names = parseName(name, defaultStyle)
-  console.log(names)
+  console.log("Component: ", names);
   const location = path.join(rootDir, 'src/svg', `${names.name}.svg`)
   const destination = path.join(rootDir, 'src/icons', `${names.name}.js`)
   const code = fs.readFileSync(location)
