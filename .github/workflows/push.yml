@@ -11,8 +11,7 @@ jobs:
     name: figma icon automation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-
+    - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
         node-version: '10.x'
@@ -23,9 +22,14 @@ jobs:
         FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
     - run: yarn generate
     - run: yarn build:bundle
+    - name: Publish new version to NPM
+      uses: actions/setup-node@v1
+      with:
+        node-version: 13.x
+        registry-url: 'https://npm.pkg.github.com'
     - run: yarn publish
       env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     - run: yarn build
     - name: GitHub Pages
       uses: crazy-max/ghaction-github-pages@v1.2.5
