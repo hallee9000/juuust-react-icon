@@ -2,7 +2,7 @@ name: icon-automation
 on:
   push:
     branches:
-    - master
+      - master
     # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
@@ -11,27 +11,27 @@ jobs:
     name: figma icon automation
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - run: yarn install
-    - run: yarn fetch
-      env: 
-        FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
-        FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-    - run: yarn generate
-    - run: yarn build:bundle
-    - name: Publish new version to NPM
-      uses: actions/setup-node@v1
-      with:
-        node-version: 10.x
-        registry-url: 'https://npm.pkg.github.com'
-        always-auth: true
+      - uses: actions/checkout@v2
+      - run: yarn install
+      - run: yarn fetch
+        env:
+          FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - run: yarn generate
+      - run: yarn build:bundle
+      - name: Publish new version to NPM
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+          registry-url: "https://npm.pkg.github.com"
+          always-auth: true
       - run: yarn publish
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-    - run: yarn build
-    - name: GitHub Pages
-      uses: crazy-max/ghaction-github-pages@v1.2.5
-      with:
-        build_dir: docs
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+      - run: yarn build
+      - name: GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v1.2.5
+        with:
+          build_dir: docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
