@@ -1358,6 +1358,43 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bestseller/bestone-buying-icon-library@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@bestseller/bestone-buying-icon-library@workspace:."
+  dependencies:
+    "@babel/cli": ^7.5.5
+    "@babel/core": ^7.5.5
+    "@babel/plugin-proposal-object-rest-spread": ^7.5.5
+    "@babel/preset-env": ^7.5.5
+    "@babel/preset-react": ^7.0.0
+    "@rollup/plugin-babel": ^5.1.0
+    "@rollup/plugin-commonjs": ^14.0.0
+    "@rollup/plugin-node-resolve": ^8.4.0
+    "@rollup/plugin-replace": ^2.3.3
+    cheerio: ^1.0.0-rc.3
+    concurrently: ^4.1.1
+    dotenv: ^8.2.0
+    figma-js: ^1.11.0
+    fs-extra: ^9.0.1
+    got: ^11.5.1
+    normalize.css: ^8.0.1
+    p-queue: 2.4.2
+    prettier-eslint: ^9.0.0
+    prop-types: ^15.8.1
+    react: ^16.13.1
+    react-dom: ^16.13.1
+    rollup: ^1.19.4
+    rollup-plugin-babel: ^4.3.3
+    rollup-plugin-copy: ^3.3.0
+    rollup-plugin-postcss: ^3.1.3
+    rollup-plugin-serve: ^1.0.3
+    rollup-plugin-uglify: ^6.0.4
+    styled-components: ^5.1.1
+    svgo: ^1.3.0
+    uppercamelcase: ^3.0.0
+  languageName: unknown
+  linkType: soft
+
 "@emotion/is-prop-valid@npm:^0.8.8":
   version: 0.8.8
   resolution: "@emotion/is-prop-valid@npm:0.8.8"
@@ -2059,42 +2096,6 @@ __metadata:
   checksum: 9b67bfe558772f40cf743a3469b48b286aecec2ea9fe80c48d74845e53aab1cef524fafedf123a63019b49ac397760573ef5f173f539423061f7217cbb5fbd40
   languageName: node
   linkType: hard
-
-"bestone-buying-icon-library@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "bestone-buying-icon-library@workspace:."
-  dependencies:
-    "@babel/cli": ^7.5.5
-    "@babel/core": ^7.5.5
-    "@babel/plugin-proposal-object-rest-spread": ^7.5.5
-    "@babel/preset-env": ^7.5.5
-    "@babel/preset-react": ^7.0.0
-    "@rollup/plugin-babel": ^5.1.0
-    "@rollup/plugin-commonjs": ^14.0.0
-    "@rollup/plugin-node-resolve": ^8.4.0
-    "@rollup/plugin-replace": ^2.3.3
-    cheerio: ^1.0.0-rc.3
-    concurrently: ^4.1.1
-    dotenv: ^8.2.0
-    figma-js: ^1.11.0
-    fs-extra: ^9.0.1
-    got: ^11.5.1
-    normalize.css: ^8.0.1
-    p-queue: 2.4.2
-    prettier-eslint: ^9.0.0
-    react: ^16.13.1
-    react-dom: ^16.13.1
-    rollup: ^1.19.4
-    rollup-plugin-babel: ^4.3.3
-    rollup-plugin-copy: ^3.3.0
-    rollup-plugin-postcss: ^3.1.3
-    rollup-plugin-serve: ^1.0.3
-    rollup-plugin-uglify: ^6.0.4
-    styled-components: ^5.1.1
-    svgo: ^1.3.0
-    uppercamelcase: ^3.0.0
-  languageName: unknown
-  linkType: soft
 
 "big.js@npm:^5.2.2":
   version: 5.2.2
@@ -5915,6 +5916,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"prop-types@npm:^15.8.1":
+  version: 15.8.1
+  resolution: "prop-types@npm:15.8.1"
+  dependencies:
+    loose-envify: ^1.4.0
+    object-assign: ^4.1.1
+    react-is: ^16.13.1
+  checksum: c056d3f1c057cb7ff8344c645450e14f088a915d078dcda795041765047fa080d38e5d626560ccaac94a4e16e3aa15f3557c1a9a8d1174530955e992c675e459
+  languageName: node
+  linkType: hard
+
 "pump@npm:^3.0.0":
   version: 3.0.0
   resolution: "pump@npm:3.0.0"
@@ -5960,7 +5972,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^16.7.0, react-is@npm:^16.8.1":
+"react-is@npm:^16.13.1, react-is@npm:^16.7.0, react-is@npm:^16.8.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
   checksum: f7a19ac3496de32ca9ae12aa030f00f14a3d45374f1ceca0af707c831b2a6098ef0d6bdae51bd437b0a306d7f01d4677fcc8de7c0d331eb47ad0f46130e53c5f

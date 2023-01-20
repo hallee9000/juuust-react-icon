@@ -6,7 +6,12 @@ on:
     # file paths to consider in the event. Optional; defaults to all.
     paths:
       - package.json
-
+nodeLinker: pnp
+    npmScopes:
+      bestseller:
+        npmAlwaysAuth: true
+        npmAuthToken: ${{ secrets.NPM_AUTH_TOKEN }}
+        npmRegistryServer: "https://npm.pkg.github.com"
 jobs:
   icon_automation:
     name: figma icon automation
@@ -18,13 +23,6 @@ jobs:
       with:
         node-version: '10.x'
     - run: yarn install
-    # - name: Figma Action
-    #   uses: primer/figma-action@v1.0.0-alpha.2
-    #   with:
-    #     args: "format=svg outputDir=./src/"
-    #   env:
-    #     FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
-    #     FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
     - run: yarn fetch
       env: 
         FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
