@@ -12,24 +12,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: yarn install
-      - run: yarn fetch
-        env:
-          FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
-          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-      - run: yarn generate
-      - run: yarn build:bundle
+      - name: Run yarn install and fetch icons
+        run: yarn install
+        run: yarn fetch
+          env:
+            FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
+            FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - name: Generate the icons
+        run: yarn generate
+      - name: Build the bundle
+        run: yarn build:bundle 
       - name: Publish new version to NPM
         uses: actions/setup-node@v1
         with:
           node-version: 10.x
           registry-url: "https://npm.pkg.github.com"
           always-auth: true
-      - run: yarn publish
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
-      - run: yarn build
+        run: yarn publish
+          env:
+            NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+            NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+      - name: Build the dev ,rollup config
+        run: yarn build
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v1.2.5
         with:
