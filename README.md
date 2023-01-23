@@ -1,4 +1,14 @@
-# Icon Automation Workflow Using Figma
+# Buying Icon Library
+
+This library is used to expose our icons in Figma to all frontends that wish to use them.
+We have a plugin in Figma, which is connected to the library and sets up a pull request when the version is changed.
+Once the pull request has been merged, and the version has been bumped, GitHub actions are triggered to run through the deployment flow.
+The deployment flow deploys the library to NPM under @bestseller/bestone-buying-icon-library as well as GitHub pages, so all the current icons can be viewed there.
+
+To use the library locally, follow the steps below:
+
+
+## Icon Automation Workflow Using Figma
 
 It's a repository for [Figma Icon Automation Plugin](https://github.com/leadream/figma-icon-automation).
 
