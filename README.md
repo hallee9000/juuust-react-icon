@@ -13,3 +13,6 @@ npm install @tant/icons --save
 
 ## icon components preview url
 https://td-fe.github.io/tant-icons/
+
+## LICENSE
+[MIT](./LICENSE)
