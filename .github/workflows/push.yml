@@ -14,12 +14,17 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: actions/setup-node@v1
+      - uses: zmicro-design/action-setup-node@v1
         with:
           node-version: "16.x"
-      - run: echo "${{ secrets.FIGMA_TOKEN }}"
-      - run: echo "${{ secrets.FIGMA_FILE_URL }}"
-      - run: yarn install
+          
+      - run: |
+          echo "${{ secrets.FIGMA_TOKEN }}"
+          echo "${{ secrets.FIGMA_FILE_URL }}"
+      
+      - name: Install dependencies
+        run: yarn install
+      
       - name: Figma Action
         uses: primer/figma-action@v1.0.0-alpha.2
         with:
@@ -27,14 +32,18 @@ jobs:
         env:
           FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
-      - run: yarn generate
-      - run: yarn build:bundle
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" > ~/.npmrc
-      # - run: echo "scope=tant" >> ~/.npmrc
-      # - run: echo "@tant:registry=https://registry.npmjs.org/" >> ~/.npmrc
-      - run: yarn publish
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          
+      - name: Build
+        run: |
+          yarn generate
+          yarn build:bundle
+      
+      - name: Publish
+        uses: zmicro-design/action-npm-publish@v1
+        with:
+          registry: https://registry.npmjs.org
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
+          
       - run: yarn build
       - name: GitHub Pages
         uses: crazy-max/ghaction-github-pages@v1.2.5
@@ -49,7 +58,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
-      - uses: actions/setup-node@v1
+      - uses: zmicro-design/action-setup-node@v1
         with:
           node-version: "16.x"
 
@@ -64,17 +73,14 @@ jobs:
           FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
           FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
 
-      - name: Generate and Build
+      - name: Build
         run: |
           yarn generate
           yarn build:bundle
 
       - name: Publish
-        run: |
-          npm set registry https://npm.thinkingdata.cn:3443
-          npm config set //npm.thinkingdata.cn:3443/:_authToken "${TA_NPM_TOKEN}"
-          npm config set //npm.thinkingdata.cn:3443/:always-auth true
-          yarn publish
-        env:
-          TA_NPM_TOKEN: ${{ secrets.TA_NPM_TOKEN }}
+        uses: zmicro-design/action-npm-publish@v1
+        with:
+          registry: https://npm.thinkingdata.cn:3443
+          token: ${{ secrets.TA_NPM_TOKEN }}
 
