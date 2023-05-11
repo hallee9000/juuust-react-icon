@@ -1,6 +1,6 @@
 {
   "name": "@bestseller/bestone-buying-icon-library",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
   "module": "dist/juuust-react-icon.esm.js",
