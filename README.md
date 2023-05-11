@@ -13,7 +13,7 @@ To use the library locally, follow the steps below:
 
 ## Icon Automation Workflow Using Figma
 
-It's a repository for [Figma Icon Automation Plugin](https://github.com/leadream/figma-icon-automation).
+It's a repository froked from [Figma Icon Automation Plugin](https://github.com/leadream/figma-icon-automation).
 
 ## Development
 Create a `.env` in the root directory. Put your Figma file url and Figma token inside.

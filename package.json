@@ -1,6 +1,6 @@
 {
   "name": "@bestseller/bestone-buying-icon-library",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
   "module": "dist/juuust-react-icon.esm.js",
@@ -8,8 +8,6 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/leadream/juuust-react-icon.git",
-  "author": "leadream",
   "keywords": [
     "react",
     "icons",
@@ -19,10 +17,6 @@
     "juuust",
     "design"
   ],
-  "bugs": {
-    "url": "https://github.com/leadream/juuust-react-icon/issues"
-  },
-  "homepage": "https://github.com/leadream/juuust-react-icon#readme",
   "scripts": {
     "fetch": "node bin/fetchSVG.js",
     "generate": "sudo rm -rf src/icons && node bin/build.js",
