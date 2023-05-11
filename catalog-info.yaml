@@ -1,0 +1,18 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bestone-buying-icon-library
+  description: Shared logos for the frontends used in BESTONE
+  tags:
+    - react
+    - typescript
+    - node
+  annotations:
+    github.com/project-slug:  BESTSELLER/bestone-buying-icon-library
+    circleci.com/project-slug: github/BESTSELLER/bestone-buying-icon-library
+    sonarqube.org/project-key: BESTSELLER_bestone-buying-icon-library
+spec:
+  type: library
+  lifecycle: production
+  owner: buying
+
