@@ -1,0 +1,19 @@
+# This file activates the Depandabot Github app
+# It creates PR's to keep Docker images and npm dependency packages up to date
+# Docs: https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+version: 2
+updates:
+  - package-ecosystem: "npm" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    target-branch: "master"
+    reviewers:
+      - BESTSELLER/buying
+  - package-ecosystem: "docker" # See documentation for possible values
+    directory: "/" # Location of package manifests
+    schedule:
+      interval: "daily"
+    target-branch: "master"
+    reviewers:
+      - BESTSELLER/buying
