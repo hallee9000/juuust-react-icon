@@ -31,6 +31,7 @@ const generateIconsIndex = () => {
     color?: string;
     size?: string | number;
     spin?: boolean;
+    testid?: string;
     iconClassName?: string;
   }
 
