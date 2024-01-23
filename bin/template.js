@@ -55,7 +55,7 @@ const getElementCode = (ComponentName, attrs, svgCode) => `
     iconClassName: PropTypes.string,
     spin: PropTypes.bool,
     color: PropTypes.string,
-    testid?: PropTypes.string,
+    testid: PropTypes.string,
     size: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number
