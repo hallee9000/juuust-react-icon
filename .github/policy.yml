@@ -1,0 +1,59 @@
+# For this to work, we need the change required checks to only be "policy bot"
+# Furthermore, we should not have any required reviews in the Github branch protection rules
+# See: https://github.com/palantir/policy-bot
+policy:
+  approval:
+    - circleci has passed
+    - or:
+        - buying has approved
+        - and:
+            - dependabot is making the PR
+            - or:
+                - minor version
+                - patch version
+  disapproval:
+    if:
+      has_labels:
+        - "major"
+    requires:
+      organizations:
+        - "bestseller"
+approval_rules:
+  - name: circleci has passed
+    if:
+      has_successful_status:
+        - "deploy"
+        - "GitGuardian Security Checks"
+    requires:
+      count: 0
+  - name: buying has approved
+    requires:
+      count: 1
+      teams:
+        - "BESTSELLER/buying"
+  - name: dependabot is making the PR
+    if:
+      has_author_in:
+        users:
+          - "dependabot[bot]"
+          - "dependabot-circleci[bot]"
+    requires:
+      count: 0
+  - name: major version
+    if:
+      has_labels:
+        - "major"
+    requires:
+      count: 0
+  - name: minor version
+    if:
+      has_labels:
+        - "minor"
+    requires:
+      count: 0
+  - name: patch version
+    if:
+      has_labels:
+        - "patch"
+    requires:
+      count: 0

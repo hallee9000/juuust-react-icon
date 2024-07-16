@@ -1,19 +1,97 @@
 # This file activates the Depandabot Github app
 # It creates PR's to keep Docker images and npm dependency packages up to date
-# Docs: https://help.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# Docs: https://docs.github.com/en/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file
 version: 2
+
+registries:
+  bit-cloud:
+    type: npm-registry
+    url: https://node-registry.bit.cloud
+    token: ${{secrets.BIT_CLOUD}}
+  github-packages-npm:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{secrets.GH_NPM_TOKEN}}
+    replaces-base: true
+
 updates:
   - package-ecosystem: "npm" # See documentation for possible values
     directory: "/" # Location of package manifests
+    registries:
+      - bit-cloud
+      - github-packages-npm
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    open-pull-requests-limit: 10
     target-branch: "master"
     reviewers:
       - BESTSELLER/buying
-  - package-ecosystem: "docker" # See documentation for possible values
-    directory: "/" # Location of package manifests
+    labels:
+      - automerge # triggers bulldozer
+      - dependencies
+    groups:
+      babel:
+        patterns:
+        - "*babel*"
+        update-types:
+        - "minor"
+        - "patch"
+      test:
+        patterns:
+        - "*jest*"
+        update-types:
+        - "minor"
+        - "patch"
+      lint:
+        patterns:
+        - "*eslint*"
+        - "@typescript-eslint"
+        exclude-patterns:
+        - "@bestseller*"
+        update-types:
+        - "minor"
+        - "patch"
+      datadog:
+        patterns:
+        - "@datadog*"
+        - "dd-trace"
+        update-types:
+        - "minor"
+        - "patch"
+      mui:
+        patterns:
+        - "@mui*"
+        update-types:
+        - "minor"
+        - "patch"
+      bestseller:
+        patterns:
+        - "@bestseller*"
+        update-types:
+        - "major"
+        - "minor"
+        - "patch"
+  - package-ecosystem: "docker"
+    directory: "/"
     schedule:
-      interval: "daily"
+      interval: "monthly"
     target-branch: "master"
     reviewers:
       - BESTSELLER/buying
+    labels:
+      - automerge # triggers bulldozer
+      - dependencies
+    groups:
+      cimg:
+        patterns:
+        - "@cimg*"
+        update-types:
+        - "minor"
+        - "patch"
+      bestseller:
+        patterns:
+        - "@bestseller*"
+        update-types:
+        - "major"
+        - "minor"
+        - "patch"
