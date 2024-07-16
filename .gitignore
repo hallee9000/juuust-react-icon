@@ -10,3 +10,6 @@ yarn-error.log
 .DS_Store
 
 .pnp.*
+
+src/icons
+src/svg
