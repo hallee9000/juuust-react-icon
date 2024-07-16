@@ -1,0 +1,32 @@
+name: health-check
+on:
+  # push:
+  #   branches:
+  #     - master
+  #   paths:
+  #     - package.json
+  pull_request:
+    branches:
+      - master
+    types:
+      - opened
+      - synchronize
+    paths:
+      - package.json
+jobs:
+  icon_health_check:
+    name: Check if icons are healthy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run yarn install
+        run: yarn install
+      - name: Fetch icons
+        run: yarn fetch
+        env:
+          FIGMA_FILE_URL: ${{ secrets.FIGMA_FILE_URL }}
+          FIGMA_TOKEN: ${{ secrets.FIGMA_TOKEN }}
+      - name: Generate the icons
+        run: yarn generate
+      - name: Build the bundle
+        run: yarn build:bundle 

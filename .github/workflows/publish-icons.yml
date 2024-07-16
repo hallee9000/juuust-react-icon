@@ -1,4 +1,4 @@
-name: icon-automation
+name: publish-icons
 on:
   push:
     branches:
@@ -8,7 +8,7 @@ on:
       - package.json
 jobs:
   icon_automation:
-    name: figma icon automation
+    name: Publish icons
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
