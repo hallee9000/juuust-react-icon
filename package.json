@@ -1,6 +1,6 @@
 {
   "name": "jiaming-icon",
-  "version": "1.17.4",
+  "version": "1.17.5",
   "description": "Icon automation workflow with Figma",
   "main": "dist/juuust-react-icon.cjs.js",
   "module": "dist/juuust-react-icon.esm.js",
