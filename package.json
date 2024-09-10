@@ -63,7 +63,8 @@
     "uppercamelcase": "^3.0.0"
   },
   "resolutions": {
-    "semver": "^7.6.2"
+    "semver": "^7.6.2",
+    "nth-check": "^2.0.1"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
