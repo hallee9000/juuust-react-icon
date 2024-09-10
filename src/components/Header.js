@@ -7,5 +7,5 @@ const Header = styled.header`
 
 export default () =>
   <Header>
-    <h1>Beautiful Icons</h1>
+    <h1>Beautiful Iconss</h1>
   </Header>
