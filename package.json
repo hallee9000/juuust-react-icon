@@ -64,7 +64,8 @@
   },
   "resolutions": {
     "semver": "^7.6.2",
-    "nth-check": "^2.0.1"
+    "nth-check": "^2.0.1",
+    "yargs-parser": "^13.1.2"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
