@@ -7,7 +7,7 @@ const configList = require('./rollup.config');
 const resolveFile = function(filePath) {
   return path.join(__dirname, '..', filePath)
 }
-const PORT = 3000;
+const PORT = 2998;
 
 const devSite = `http://127.0.0.1:${PORT}`;
 
