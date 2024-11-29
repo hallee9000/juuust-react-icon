@@ -21,12 +21,13 @@
     "fetch": "node bin/fetchSVG.js",
     "generate": "sudo rm -rf src/icons && node bin/build.js",
     "build:bundle": "sudo rm -rf dist && node_modules/.bin/rollup --c ./build/rollup.config.bundle.js",
-    "dev": "rollup -w -c ./build/rollup.config.dev.js --bundleConfigAsCjs",
-    "build": "rollup -c ./build/rollup.config.prod.js --bundleConfigAsCjs"
+    "dev": "rollup -w -c ./build/rollup.config.dev.js",
+    "build": "rollup -c ./build/rollup.config.prod.js"
   },
   "config": {
     "style": "fill"
   },
+  "type": "module",
   "license": "MIT",
   "dependencies": {
     "normalize.css": "^8.0.1",
