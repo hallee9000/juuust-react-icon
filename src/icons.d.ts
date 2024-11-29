@@ -1,13 +1,16 @@
 /// <reference types="react" />
-  import { ComponentType, SVGAttributes } from 'react';
+import { ComponentType, SVGAttributes } from "react";
 
-  interface Props extends SVGAttributes<SVGElement> {
-    color?: string;
-    size?: string | number;
-  }
+interface Props extends SVGAttributes<SVGElement> {
+  color?: string;
+  size?: string | number;
+}
 
-  type Icon = ComponentType<Props>;
-  export const PlusIcon: Icon;
+type Icon = ComponentType<Props>;
+export const BoxIcon: Icon;
+export const SizeIcon: Icon;
+export const LifebuoyIcon: Icon;
+export const PlusIcon: Icon;
 export const AngleLeftIcon: Icon;
 export const MinifyIcon: Icon;
 export const DownloadIcon: Icon;
@@ -35,8 +38,8 @@ export const DoubleDownIcon: Icon;
 export const AngleDownIcon: Icon;
 export const ExternalIcon: Icon;
 export const BranchesMasterIcon: Icon;
-export const StarStrokeIcon: Icon;
 export const StarIcon: Icon;
+export const StarIconFilled: Icon;
 export const WaitingIcon: Icon;
 export const FlagIcon: Icon;
 export const CampaignIcon: Icon;
@@ -47,6 +50,7 @@ export const NotificationsIcon: Icon;
 export const CommentIcon: Icon;
 export const CommentAddedIcon: Icon;
 export const RefreshIcon: Icon;
+export const ResetIcon: Icon;
 export const NoneIcon: Icon;
 export const BarcodeIcon: Icon;
 export const PercentIcon: Icon;
@@ -56,6 +60,7 @@ export const PreliminaryIcon: Icon;
 export const LocationIcon: Icon;
 export const PatternIcon: Icon;
 export const ImageIcon: Icon;
+export const ImageBrokenIcon: Icon;
 export const JpgIcon: Icon;
 export const PrintIcon: Icon;
 export const KeyboardIcon: Icon;
@@ -86,6 +91,7 @@ export const BomPatchIcon: Icon;
 export const BomHeelIcon: Icon;
 export const BomStrapIcon: Icon;
 export const LockIcon: Icon;
+export const UnlockIcon: Icon;
 export const PlayIcon: Icon;
 export const BomPantFrontIcon: Icon;
 export const BomPantBackIcon: Icon;
@@ -119,6 +125,7 @@ export const PaddingIcon: Icon;
 export const LiningIcon: Icon;
 export const AttachIcon: Icon;
 export const LinkIcon: Icon;
+export const UnlinkIcon: Icon;
 export const HistoryIcon: Icon;
 export const SmileIcon: Icon;
 export const CircleQuestionIcon: Icon;
@@ -140,6 +147,8 @@ export const ReportFileIcon: Icon;
 export const FileIcon: Icon;
 export const PdfIcon: Icon;
 export const SupplierIcon: Icon;
+export const MatsupplierIcon: Icon;
+export const FabricIcon: Icon;
 export const ColoursIcon: Icon;
 export const EyeIcon: Icon;
 export const EyeOffIcon: Icon;
