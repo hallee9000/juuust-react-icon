@@ -1,13 +1,13 @@
-import babel from '@rollup/plugin-babel';
-import path from 'path';
-import copy from 'rollup-plugin-copy';
-import pkg from '../package.json';
+const babel = require('@rollup/plugin-babel').babel;
+const path = require('path');
+const copy = require('rollup-plugin-copy');
+const pkg = require('../package.json');
 
 const resolveFile = function(filePath) {
-  return path.join(__dirname, '..', filePath)
-}
+  return path.join(__dirname, '..', filePath);
+};
 
-export default {
+module.exports = {
   input: 'src/icons.js',
   output: [
     { file: pkg.main, format: 'cjs' },
